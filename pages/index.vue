@@ -47,7 +47,21 @@
     methods: {
       onSubmit(event) {
         event.preventDefault()
-        alert(JSON.stringify(this.form))
+
+        const url = 'http://localhost:8080/api/login'
+        this.$axios
+          .$get(url, {
+            headers: {
+              // Accept: "application/text",
+              // "Access-Control-Allow-Origin" : "true",
+              "Content-Type": "application/text;charset=UTF-8",
+              // "Authorization": "Basic " + (Buffer.from(this.email + ":" + this.password).toString('base64'))
+            },
+          })
+          .then((data) => {
+            console.log(data);
+            alert(data)
+          });
       },
       onReset(event) {
         event.preventDefault()
